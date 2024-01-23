@@ -1,9 +1,19 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const checkUserAuthentication = (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+        const authHeader = req.headers.authorization || req.headers.Authorization;
+        if (!authHeader) {
+            return res.status(401).json({
+                success: false,
+                message: "COuld not find authorization header"
+            })
+        }
+
+        const authToken = req.headers.authorization.split(' ')[1]
+        console.log(authToken)
+        const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
         const user = decodedToken.user;
         if (req.user === user) {
             next();
@@ -16,7 +26,7 @@ const checkUserAuthentication = (req, res, next) => {
 
     } catch (error) {
         console.log(error);
-        return res.staus(500).json({
+        return res.status(500).json({
             message: "Internal Server Error"
         })
     }

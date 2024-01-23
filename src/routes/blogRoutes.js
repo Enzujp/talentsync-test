@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const blogController = require("../controllers/blogController");
+
+// middleware
 const { checkUserAuthentication } = require("../middlewares/checkUserAuth")
 
 router.get("/", checkUserAuthentication, blogController.get_all_blogs);

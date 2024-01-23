@@ -66,7 +66,7 @@ module.exports.post_login = async (req, res) => {
             res.status(200).json({
               success: true,
               message: "User successfully logged in",
-              _token: token
+              token: token
             })
           }
           else {
