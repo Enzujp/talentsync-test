@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: false}));
 
 // routes to be used 
 app.use('/user', authRoutes);
-app.use('/blog', blogRoutes);
+app.use('/blogs', blogRoutes);
 
 
 // test api
