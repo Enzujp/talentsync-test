@@ -15,7 +15,7 @@ You will need Mongodb set up in your local environment to properly run the file,
 - Create a .env file in your root project, copy and paste the following
 ```
 PORT=3000
-  SECRET_KEY='THISismysecretKeyfortheTalentSyncTest.'
+  JWT_SECRET='THISismysecretKeyfortheTalentSyncTest.'
   DBURI=mongodb://localhost:27017/talentsyncdb
 ```
 
